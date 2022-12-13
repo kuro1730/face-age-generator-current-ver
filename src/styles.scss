@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+@font-face {
+    font-family: 'fc_orbit_non-commercialbold';
+    src: url('fc_orbit_bold_-webfont.woff2') format('woff2'),
+         url('fc_orbit_bold_-webfont.woff') format('woff'),
+         url('fc_orbit_bold_-webfont.ttf') format('truetype');;
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'max_pinjohnv2regular';
+    src: url('max_pinjohn_v2-webfont.woff2') format('woff2'),
+         url('max_pinjohn_v2-webfont.woff') format('woff'),
+         url('max_pinjohn_v2-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+

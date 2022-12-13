@@ -1,0 +1,56 @@
+h3 {
+    font-family: 'max_pinjohnv2regular';
+}
+.wrapper {
+    height: auto;
+    width: auto;
+    padding : 30px 30px 30px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* background-color: #000000; */
+    /* border-radius: 8px; */
+}
+.dropzone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-weight: 200;
+    width: 300px;
+    height: 300px;
+    border: 10px dashed ;
+    border-radius: 8px;
+    background: #EEECF1;
+    /* color: rgb(8, 73, 16); */
+    border-color:#D9DADB;
+    margin-bottom: 20px;
+    box-shadow:5px 5px 30px #000000;
+}
+.uploadbtn{
+    display:block;
+    width:300px; 
+    height:40px;
+    border: 3px solid;
+    background: #355C7D;
+    border-color:#D9DADB;
+    border-radius: 8px;
+    font-weight: 200;
+    font-size: 20px;
+    font-family: 'max_pinjohnv2regular';
+    color: #FFFFFF;
+    text-shadow: 2px 2px 5px black;
+    box-shadow:2px 2px 5px black;
+    
+}
+
+.dropzone.hovering {
+    background: #F5E1FD;
+    border: 10px dashed ;
+    border-color:#EEECF1;
+}
+
+.groupBtn {
+    margin-bottom:20px;
+}

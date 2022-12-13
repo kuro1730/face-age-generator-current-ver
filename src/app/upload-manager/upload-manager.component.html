@@ -1,0 +1,32 @@
+<section class="wrapper">
+
+    <div *ngIf="files.length==0" class="dropzone" dropzone (hovered)="toggleHover($event)" (dropped)="onDrop($event) "
+        title="ลากไฟล์รูปภาพลงในนี้" [class.hovering]="isHovering">
+
+        <h3 class="h3"> อัพโหลดรูปภาพของคุณ</h3>
+
+
+    </div>
+    <div *ngIf="files.length==0">
+        <label>
+            <button class="uploadbtn" onclick="document.getElementById('files').click()">อัพโหลดรูปภาพของคุณ</button>
+            <input id="files" style="visibility:hidden;" #file type="file" (change)="onDrop(file.files)">
+        </label>
+    </div>
+    <div *ngIf="files.length > 0">
+        รูปภาพที่จะถูกอัพโหลด
+        <hr>
+    </div>
+
+    <div *ngFor="let file of files">
+
+        <app-card [file]="file"></app-card>
+        <div class = "groupBtn">
+            <button mat-fab color="warn" (click)="removeFile()" [disabled]="toggleUpload">ลบภาพ</button>
+            <button mat-fab color="primary" (click)="toggleUpload=true" [disabled]="toggleUpload==true">upload</button>
+            <!-- <button mat-fab color="accent" (click)="rotate" >rotate</button> -->
+            
+        </div>
+        <upload-task *ngIf="toggleUpload" [file]="file" (isUploadFinish)="toggleUpload=false"></upload-task>
+    </div>
+</section>

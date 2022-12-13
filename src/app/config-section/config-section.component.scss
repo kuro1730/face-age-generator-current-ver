@@ -1,0 +1,25 @@
+.wrapper{
+    height: auto;
+    width: auto;
+    padding : 30px 30px 30px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.config{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    font-weight: 200;
+    width: 300px;
+    height: 300px;
+    border-radius: 8px;
+    background: #EEECF1;
+    /* color: rgb(8, 73, 16); */
+    margin-bottom: 20px;
+    box-shadow:5px 5px 30px #000000;
+
+}

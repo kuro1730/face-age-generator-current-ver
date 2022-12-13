@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "face-age-generator": {
+      "hosting": {
+        "face-age-generator": [
+          "face-age-generator"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "face-age-generator"
+  }
+}
