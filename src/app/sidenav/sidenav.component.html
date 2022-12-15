@@ -1,7 +1,7 @@
 <div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
     <div class="logo-container">
-        <button class="logo" (click)="toggleCollapse()">A</button>
-        <div class="logo-text" @fadeInOut *ngIf="collapsed">Angular</div>
+        <button class="logo" (click)="toggleCollapse()">F</button>
+        <div class="logo-text" @fadeInOut *ngIf="collapsed">Face age generator</div>
         <button class="btn-close" @rotate *ngIf="collapsed" (click)="closeSidenav()">
             <i class="fal fa-times close-icon"></i>
         </button>
@@ -12,7 +12,9 @@
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{exact: true}"
             >
-                <i class="sidenav-link-icon" [class]="data.icon"></i>
+                <i class="sidenav-link-icon" >
+                    <img class="sidenav-pic-icon" [src]="'./assets/icon/'+data.icon"/>
+                </i>
                 <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
                     {{data.label}}
                 </span>

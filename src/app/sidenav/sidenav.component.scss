@@ -15,7 +15,7 @@
         width: 100%;
 
         .logo {
-            background: #fff;
+            background: rgb(246, 57, 135);
             text-align: center;
             width: 3rem;
             min-width: 3rem;
@@ -25,6 +25,7 @@
             font-weight: 900;
             cursor: pointer;
             border: none;
+            color: rgb(255, 255, 255);
         }
 
         .logo-text {
@@ -84,6 +85,15 @@
                 min-width: 2rem;
                 margin: 0 0.5rem;
                 text-align: center;
+                align-items: center;
+                justify-content: center;
+                
+            }
+            .sidenav-pic-icon {
+                width: 2rem;
+                min-width: 2rem;
+                align-items: center;
+                justify-content: center;
             }
 
             .sidenav-link-text {

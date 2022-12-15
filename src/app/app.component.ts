@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 interface SideNavToggle {
   screenWidth: number;
   collapsed: boolean;
@@ -13,10 +14,13 @@ export class AppComponent {
   title = 'face-age-generator';
   isSideNavCollapsed = false;
   screenWidth = 0;
-
+  constructor(private router:Router){}
+  ngOnInit() {
+    this.router.navigate([''])
+  }
   onToggleSideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth;
     this.isSideNavCollapsed = data.collapsed;
-  }
+   }
 
 }

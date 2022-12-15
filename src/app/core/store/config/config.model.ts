@@ -1,3 +1,3 @@
 export interface Iconfig { 
-    File:File
+    file:File
  }

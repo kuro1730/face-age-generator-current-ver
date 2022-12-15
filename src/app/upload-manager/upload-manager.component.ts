@@ -1,27 +1,44 @@
-import { AfterViewChecked, AfterViewInit, Component, OnInit } from '@angular/core';
-import { Store } from "@ngxs/store";
+import { AfterViewChecked, AfterViewInit, Component, OnInit ,OnChanges} from '@angular/core';
+import { Select,Store } from "@ngxs/store";
+import { Observable } from 'rxjs';
 import { first } from "rxjs/operators";
 import { ConfigState } from 'src/app/core/store/config/config.actions'
 import { Iconfig} from 'src/app/core/store/config/config.model'
 import { configState } from '../core/store/config/config.state';
+import { Router } from '@angular/router';
 @Component({
     selector: 'upload-manager',
     templateUrl: './upload-manager.component.html',
     styleUrls: ['./upload-manager.component.css']
 })
-export class UploadManagerComponent implements OnInit {
-    toggleUpload:boolean = false;
+
+
+export class UploadManagerComponent implements OnInit,AfterViewChecked {
+    toggleUpload:boolean ;
+    uploadFinish:boolean=false ; 
     isHovering: boolean;
     files: File[] = [];
+    file: File=null;
+    configStore :Observable<any>;
+    stateFile: File;
+    stateData: any;
+    @Select()
+    configState$: Observable<configState>;
  
     constructor(
-       private store: Store
+       private store: Store,
+       private router:Router
         )
          { }
 
     ngOnInit(): void {
     }
     
+    ngAfterViewChecked(){
+    
+        if(this.uploadFinish==true)
+        this.router.navigate(['/config'] );
+    }
     
     toggleHover(event: boolean) {
         this.isHovering = event;
@@ -38,19 +55,22 @@ export class UploadManagerComponent implements OnInit {
         for (let i = 0; i < event.length; i++) {
             console.log('uploadManager adding file: ', event.item(i));
             this.files.push(event.item(i));
-           // this.store.dispatch(new ConfigState.updateState(this.files))
+            this.file= this.files[i]
+            
+            this.store.dispatch(new ConfigState.updateState({File: this.file}))
+            this.configState$.subscribe(file=>{this.stateData=file})
+            console.log("ConfigState==>",this.stateData.File);
+            this.file=this.stateData.File
+            if(this.file===this.files[i]&&this.file==this.files[i]){console.log("this File is Equal i sus")}
         }
         
-       
-        // img.src = reader.result.toString();
-        // console.log("IMG=>", reader.result);
         
     }
     removeFile() {
         // Delete the item from fileNames list
         // delete file from FileList
         this.files = [];
-        //this.store.dispatch(new ConfigState.resetState())
+        this.store.dispatch(new ConfigState.resetState())
        }
     
     // rotateImage(){
@@ -91,4 +111,9 @@ export class UploadManagerComponent implements OnInit {
     //         }
     //         return new File([u8arr], filename, {type:mime});
     //     }
+    // getDataFromState(){
+    //     this.configStore = this.store.select(state => state.configState)
+    //     this.stateFile = ConfigState;
+    //     //console.log(this.stateFile);
+    // }
 }

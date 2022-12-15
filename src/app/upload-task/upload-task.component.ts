@@ -3,24 +3,24 @@ import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/compat/
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, of } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
-
+import { Router } from '@angular/router';
 @Component({
     selector: 'upload-task',
     templateUrl: './upload-task.component.html',
     styleUrls: ['./upload-task.component.css']
 })
 export class UploadTaskComponent implements OnInit {
-
+    
     @Input() file: File;
     @Output() isUploadFinish =new EventEmitter<boolean>() ;
-
+    upLoadFinishStatus:boolean;
     task: AngularFireUploadTask;                                        // this does the uploading for us
 
     percentage: Observable<number>;
     snapshot: Observable<any>;
     downloadURL: string;
 
-    constructor(private storage: AngularFireStorage, private db: AngularFirestore) {  }
+    constructor(private storage: AngularFireStorage, private db: AngularFirestore,public router: Router) {  }
 
     ngOnInit(): void {
         
@@ -59,10 +59,18 @@ export class UploadTaskComponent implements OnInit {
                     })
                     .catch(function (error) {
                         console.error('Error writing document:', error);
+                        
                     });
-                    this.isUploadFinish.emit(true); }),
+                    this.isUploadFinish.emit(true);
+                    // console.log(this.upLoadFinishStatus)
+                    })
             
-        );
+        )
+        // console.log(this.file)
+        // console.log(this.upLoadFinishStatus)
+        //this.upLoadFinishStatus=!this.isActive(this.snapshot)
+        // if(this.upLoadFinishStatus==true){
+        // this.router.navigate(['/config'] )};
         
         
     }
