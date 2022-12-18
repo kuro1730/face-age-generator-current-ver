@@ -28,7 +28,7 @@ h3 {
     margin-bottom: 20px;
     box-shadow:5px 5px 30px #000000;
 }
-.uploadbtn{
+.uploadfilebtn{
     display:block;
     width:300px; 
     height:40px;
@@ -45,6 +45,40 @@ h3 {
     
 }
 
+.uploadbtn{
+    display:block;
+    width:100px; 
+    height:40px;
+    border: 2px solid;
+    background: #1E90FF ;
+    border-color:#D9DADB;
+    border-radius: 8px;
+    font-weight: 200;
+    font-size: 20px;
+    font-family: 'max_pinjohnv2regular';
+    color: #FFFFFF;
+    text-shadow: 2px 2px 5px black;
+    box-shadow:2px 2px 5px black;
+    
+}
+
+.removebtn{
+    display:block;
+    width:100px; 
+    height:40px;
+    border: 2px solid;
+    background: #767676;
+    border-color:#D9DADB;
+    border-radius: 8px;
+    font-weight: 200;
+    font-size: 20px;
+    font-family: 'max_pinjohnv2regular';
+    color: #FFFFFF;
+    text-shadow: 2px 2px 5px black;
+    box-shadow:2px 2px 5px black;
+    margin-right:20px
+}
+
 .dropzone.hovering {
     background: #F5E1FD;
     border: 10px dashed ;
@@ -53,4 +87,10 @@ h3 {
 
 .groupBtn {
     margin-bottom:20px;
+    display:flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
 }

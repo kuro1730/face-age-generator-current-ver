@@ -9,22 +9,23 @@
     </div>
     <div *ngIf="files.length==0">
         <label>
-            <button class="uploadbtn" onclick="document.getElementById('files').click()">อัพโหลดรูปภาพของคุณ</button>
+            <button class="uploadfilebtn" onclick="document.getElementById('files').click()">เลือกรูปภาพของคุณ</button>
             <input id="files" style="visibility:hidden;" #file type="file" (change)="onDrop(file.files)">
         </label>
     </div>
-    <div *ngIf="files.length > 0">
+    <!-- <div *ngIf="files.length > 0">
         รูปภาพที่จะถูกอัพโหลด
         <hr>
-    </div>
+    </div> -->
 
     <div *ngFor="let file of files" >
 
         <app-card [file]="file"></app-card>
         
         <div class = "groupBtn">
-            <button mat-fab color="warn" (click)="removeFile()" [disabled]="toggleUpload">ลบภาพ</button>
-            <button mat-fab color="primary" (click)="toggleUpload=true" [disabled]="toggleUpload==true">upload</button>
+            <button  class="removebtn" (click)="removeFile()" [disabled]="toggleUpload">ลบภาพ</button>
+           
+            <button  class="uploadbtn" (click)="toggleUpload=true" [disabled]="toggleUpload==true"> อัพโหลด</button>
             <!-- <button mat-fab color="accent" (click)="rotate" >rotate</button> -->
             
         </div>

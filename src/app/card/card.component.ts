@@ -26,8 +26,14 @@ export class CardComponent implements OnInit {
     //   }
     const reader = new FileReader();
     reader.readAsDataURL(this.file);
-    reader.onload = () => {
+    reader.addEventListener('load', () => {
+      this.imageSrc = reader.result as string;
+    });
+  //   reader.onload = () => {
    
-    this.imageSrc = reader.result as string;}
+  //   this.imageSrc = reader.result as string;
+  
+  // }
+    reader.readAsDataURL(this.file);
 }
 }

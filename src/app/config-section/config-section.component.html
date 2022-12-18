@@ -1,18 +1,40 @@
-<section class = "wrapper"> 
-    <div class = "config">
-        <div *ngFor="let file of files">
-            <app-card [file]="file" ></app-card>
-        </div>
-        <mat-form-field  appearance="fill">
-            <mat-label>Value</mat-label>
-            <input matInput type="number" [(ngModel)]="value">
-          </mat-form-field>
-        <mat-slider  
-        [max]="100"
-        [min]="-10"
-        [step]="0.1"
-        >
-        
-      <input matSliderThumb [(ngModel)]="value"></mat-slider>
+<section class="wrapper">
+  <div class="config" stye="padding-top:10px">
+    <div *ngFor="let file of files">
+      <app-card  *ngIf="file"[file]="file"></app-card>
     </div>
+
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Value</mat-label>
+      <input matInput type="number" [(ngModel)]="age">
+    </mat-form-field> -->
+    <!-- <p>{{value}}</p> -->
+    <div class="checkSection">
+      <div class = "check">
+      <p class="optionLabel">ใส่แว่น</p>
+      <mat-checkbox color="primary" [(ngModel)]="eyeGlasses" style="margin-left: 10px;"></mat-checkbox>
+      <!-- <p>{{eyeGlasses}}</p> -->
+      </div>
+      <div class = "check">
+      <p class="optionLabel">การยิ้ม</p>
+      <mat-checkbox color="primary" [(ngModel)]="smile" style="margin-left: 10px;"></mat-checkbox>
+      <!-- <p>{{smile}}</p> -->
+      </div>
+    </div>
+    <p class="optionLabel">อายุ</p>
+    <ngx-slider [(value)]="age" [options]="options" style="width:300px; margin: 50px 10px 50px 10px;"></ngx-slider>
+    <!-- <p>{{value}}</p> -->
+
+
+  </div>
+  <button  class="submitBtn" (click)="submit()" >สร้างรูปภาพ</button>
+
+  <div #section id="section" class="config" *ngIf="resultFile"  style="margin-top:50px;"   >
+  <p class="optionLabel" style="font-size: 40px; 
+    margin:40px 0px 20px 0px; 
+    ">
+    ผลลัพธ์</p>
+  <app-card *ngIf="resultFile"  style="margin:0px 10px 0px 10px;" [file]="resultFile"></app-card>
+  </div>
+ 
 </section>

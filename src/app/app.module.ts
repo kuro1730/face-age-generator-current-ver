@@ -51,6 +51,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -60,6 +61,7 @@ import { ConfigComponent } from './config/config.component';
 import { ConfigSectionComponent } from './config-section/config-section.component';
 import { NgxsModule } from "@ngxs/store";
 import { configState } from "./core";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
     declarations: [
@@ -71,7 +73,8 @@ import { configState } from "./core";
         SidenavComponent,
         CardComponent,
         ConfigComponent,
-        ConfigSectionComponent
+        ConfigSectionComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
@@ -122,6 +125,7 @@ import { configState } from "./core";
         HttpClientModule,
         NgbModule,
         NgxsModule.forRoot([configState], { developmentMode: true }),
+        NgxSliderModule
     ],
     providers: [],
     bootstrap: [AppComponent]
