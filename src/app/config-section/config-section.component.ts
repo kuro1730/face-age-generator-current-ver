@@ -16,7 +16,7 @@ import { async } from '@firebase/util';
 })
 export class ConfigSectionComponent implements OnInit, AfterViewInit {
   ///slider////
-  
+  pose:number =0;
   imageResponse: any
   age: number = 0;
   eyeGlasses: boolean;
@@ -26,14 +26,22 @@ export class ConfigSectionComponent implements OnInit, AfterViewInit {
     ceil: 3
   };
 
+  poseoptions: Options = {
+    floor: -3,
+    ceil: 3
+  };
+
   //////////////////////////////////////
+  private authToken: string;
   files: File[] = [];
   file: File;
   resultFile:File;
   stateData: any;
   @Select()
   configState$: Observable<configState>;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    
+   }
   ngAfterViewInit() {
  
   }
@@ -53,6 +61,7 @@ export class ConfigSectionComponent implements OnInit, AfterViewInit {
 
   submit() {
     this.resultFile=null
+   
     let eyeGlasses: number
     let smile: number
     if (this.eyeGlasses == true) 
@@ -62,21 +71,22 @@ export class ConfigSectionComponent implements OnInit, AfterViewInit {
     {smile = 3;}
     else{smile = -3}
 
+
+
     const params = new HttpParams()
       .append('num_sample', 1)
       .append('noise_seed', 0)
       .append('age', this.age)
       .append('eyeglasses', eyeGlasses)
       .append('gender', 0)
-      .append('pose', 0)
+      .append('pose', this.pose)
       .append('smile', smile);
     console.log("params=>" + params)
-    this.http.post("http://c139-34-124-141-80.ngrok.io/getImgAttr?" + params, null)
+    this.http.post("http://4e2f-34-141-203-85.ngrok.io/getImgAttr?" + params, this.file)
       .subscribe(response => {
         console.log(response)
         this.imageResponse = response
         this.imageResponse = this.imageResponse.image
-
         this.setResultImage(this.imageResponse)
       })
       
@@ -88,11 +98,8 @@ export class ConfigSectionComponent implements OnInit, AfterViewInit {
     // fetch('http://6c45-34-143-237-120.ngrok.io/getImgAttr?'+"num_sample=1&noise_seed=0"+"&age="+this.age+"&eyeglasses="+eyeGlasses+"&gender=0"+"&pose=0"+"&smile="+smile).then(response => { console.log(response.json())});
   }
   setResultImage(imageResponse: any) {
-    
     this.imageResponse = imageResponse
     console.log("image==>", this.imageResponse)
-    // this.urltoFile('data:text/plain;base64,aGVsbG8gd29ybGQ=', 'hello.txt','text/plain')
-    // .then(function(file){ console.log(file);});
     var byteString = atob(this.imageResponse);
     var arrayBuffer = new Uint8Array(byteString.length);
     for (var i = 0; i < byteString.length; i++) {
@@ -103,7 +110,8 @@ export class ConfigSectionComponent implements OnInit, AfterViewInit {
   }
 
   
-
+ // this.urltoFile('data:text/plain;base64,aGVsbG8gd29ybGQ=', 'hello.txt','text/plain')
+    // .then(function(file){ console.log(file);});
   // urltoFile(url, filename, mimeType) {
   //   return (fetch(url)
   //     .then(function (res) { return res.arrayBuffer(); })

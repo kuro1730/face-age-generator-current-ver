@@ -21,11 +21,17 @@
       <!-- <p>{{smile}}</p> -->
       </div>
     </div>
+  <div>
     <p class="optionLabel">อายุ</p>
     <ngx-slider [(value)]="age" [options]="options" style="width:300px; margin: 50px 10px 50px 10px;"></ngx-slider>
     <!-- <p>{{value}}</p> -->
-
-
+    <p class="optionLabel">ท่าทาง</p>
+    <ngx-slider [(value)]="pose" [options]="poseoptions" style="width:300px; margin: 50px 10px 50px 10px;"></ngx-slider>
+    <div class="sliderLabel">
+    <p  >ซ้าย</p>
+    <p style="margin-left: 250px;">ขวา</p>
+    </div>
+  </div>
   </div>
   <button  class="submitBtn" (click)="submit()" >สร้างรูปภาพ</button>
 
