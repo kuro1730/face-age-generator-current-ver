@@ -9,6 +9,7 @@
       <input matInput type="number" [(ngModel)]="age">
     </mat-form-field> -->
     <!-- <p>{{value}}</p> -->
+    
     <div class="checkSection">
       <div class = "check">
       <p class="optionLabel">ใส่แว่น</p>
@@ -22,7 +23,7 @@
       </div>
     </div>
   <div>
-    <p class="optionLabel">อายุ</p>
+    <p class="optionLabel">อายุของใบหน้าผลลัพธ์</p>
     <ngx-slider [(value)]="age" [options]="options" style="width:300px; margin: 50px 10px 50px 10px;"></ngx-slider>
     <!-- <p>{{value}}</p> -->
     <p class="optionLabel">ท่าทาง</p>
@@ -41,6 +42,8 @@
     ">
     ผลลัพธ์</p>
   <app-card *ngIf="resultFile"  style="margin:0px 10px 0px 10px;" [file]="resultFile"></app-card>
+  
   </div>
- 
+  
+  <app-banner></app-banner>
 </section>

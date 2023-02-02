@@ -37,6 +37,9 @@ export class ConfigSectionComponent implements OnInit, AfterViewInit {
   file: File;
   resultFile:File;
   stateData: any;
+  originalImageSrc =""
+  resultImageSrc = ""
+
   @Select()
   configState$: Observable<configState>;
   constructor(private http: HttpClient) {
@@ -82,7 +85,9 @@ export class ConfigSectionComponent implements OnInit, AfterViewInit {
       .append('pose', this.pose)
       .append('smile', smile);
     console.log("params=>" + params)
-    this.http.post("http://4e2f-34-141-203-85.ngrok.io/getImgAttr?" + params, this.file)
+    const formData = new FormData();
+    formData.append('file', this.file);
+    this.http.post("http://42a4-35-230-99-181.ngrok.io/getImgAttr?" + params, formData)
       .subscribe(response => {
         console.log(response)
         this.imageResponse = response
@@ -109,7 +114,19 @@ export class ConfigSectionComponent implements OnInit, AfterViewInit {
     console.log("result==>",this.resultFile)
   }
 
+  showResultBanner(){
+    const reader = new FileReader();
+    reader.readAsDataURL(this.file);
+    reader.addEventListener('load', () => {
+      this.resultImageSrc = reader.result as string;
+    });
+  //   reader.onload = () => {
+   
+  //   this.imageSrc = reader.result as string;
   
+  // }
+    reader.readAsDataURL(this.file);
+  }
  // this.urltoFile('data:text/plain;base64,aGVsbG8gd29ybGQ=', 'hello.txt','text/plain')
     // .then(function(file){ console.log(file);});
   // urltoFile(url, filename, mimeType) {

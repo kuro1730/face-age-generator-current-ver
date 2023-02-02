@@ -58,10 +58,10 @@ export class UploadManagerComponent implements OnInit,AfterViewChecked {
             this.file= this.files[i]
             
             this.store.dispatch(new ConfigState.updateState({File: this.file}))
-            this.configState$.subscribe(file=>{this.stateData=file})
-            console.log("ConfigState==>",this.stateData.File);
-            this.file=this.stateData.File
-            if(this.file===this.files[i]&&this.file==this.files[i]){console.log("this File is Equal i sus")}
+            // this.configState$.subscribe(file=>{this.stateData=file})
+            // console.log("ConfigState==>",this.stateData.File);
+            // this.file=this.stateData.File
+            // if(this.file===this.files[i]&&this.file==this.files[i]){console.log("this File is Equal i sus")}
         }
         
         

@@ -62,6 +62,7 @@ import { ConfigSectionComponent } from './config-section/config-section.componen
 import { NgxsModule } from "@ngxs/store";
 import { configState } from "./core";
 import { LoginComponent } from './login/login.component';
+import { BannerComponent } from './banner/banner.component';
 
 @NgModule({
     declarations: [
@@ -74,7 +75,8 @@ import { LoginComponent } from './login/login.component';
         CardComponent,
         ConfigComponent,
         ConfigSectionComponent,
-        LoginComponent
+        LoginComponent,
+        BannerComponent
     ],
     imports: [
         BrowserModule,
