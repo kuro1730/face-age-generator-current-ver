@@ -61,8 +61,10 @@ import { ConfigComponent } from './config/config.component';
 import { ConfigSectionComponent } from './config-section/config-section.component';
 import { NgxsModule } from "@ngxs/store";
 import { configState } from "./core";
+import { urlState } from "./core";
 import { LoginComponent } from './login/login.component';
 import { BannerComponent } from './banner/banner.component';
+import { StartPageComponent } from './start-page/start-page.component';
 
 @NgModule({
     declarations: [
@@ -76,7 +78,8 @@ import { BannerComponent } from './banner/banner.component';
         ConfigComponent,
         ConfigSectionComponent,
         LoginComponent,
-        BannerComponent
+        BannerComponent,
+        StartPageComponent
     ],
     imports: [
         BrowserModule,
@@ -126,7 +129,7 @@ import { BannerComponent } from './banner/banner.component';
         ReactiveFormsModule,
         HttpClientModule,
         NgbModule,
-        NgxsModule.forRoot([configState], { developmentMode: true }),
+        NgxsModule.forRoot([configState,urlState], { developmentMode: true }),
         NgxSliderModule
     ],
     providers: [],

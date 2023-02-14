@@ -5,6 +5,7 @@ import { ConfigState } from 'src/app/core/store/config/config.actions'
 import { Iconfig} from 'src/app/core/store/config/config.model'
 import { configState } from '../core/store/config/config.state';
 import { Select,Store } from '@ngxs/store';
+import { UrlState } from 'src/app/core/store/URL/url.actions'
 @Component({
   selector: 'app-config',
   templateUrl: './config.component.html',
@@ -15,9 +16,10 @@ export class ConfigComponent implements OnInit {
   file:File;
   text : String;
   stateData:any;
+  downloadURL:string
   @Select()
     configState$: Observable<configState>;
-  constructor(private route:ActivatedRoute) { }
+  constructor(private store:Store,private route:ActivatedRoute) { }
   
   ngOnInit(): void {
     // this.route.queryParams.subscribe(params => {
@@ -30,6 +32,9 @@ export class ConfigComponent implements OnInit {
     this.configState$.subscribe(file=>{this.stateData=file})
     console.log("ConfigState==>",this.stateData.File);
     this.file=this.stateData.File
+    this.downloadURL = this.route.snapshot.paramMap.get('downloadURL');
+    console.log("this.downloadURL in config ==> ",this.downloadURL)
+    this.store.dispatch(new UrlState.updateState({url: this.downloadURL}))
   //   var output = document.getElementById('outputConfig') as HTMLImageElement ;
   //   output.src = URL.createObjectURL(this.stateData.File);
   //   output.onload = function() {

@@ -8,6 +8,20 @@
     flex-direction: column;
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(118, 113, 113, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    
+  }
+
 .config{
     display: flex;
     align-items: center;

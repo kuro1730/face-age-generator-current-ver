@@ -14,7 +14,6 @@ export class CardComponent implements OnInit {
   constructor(private store: Store) { }
   imageSrc:String
   ngOnInit(): void {
-    console.log("cardFile==>",this.file)
     this.loadFileImg();
   }
   loadFileImg(){

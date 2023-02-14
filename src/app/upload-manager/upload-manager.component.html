@@ -1,4 +1,5 @@
 <section class="wrapper"  >
+    
     <div *ngIf="files.length==0" class="dropzone" dropzone (hovered)="toggleHover($event)" (dropped)="onDrop($event) "
         title="ลากไฟล์รูปภาพลงในนี้" [class.hovering]="isHovering">
 

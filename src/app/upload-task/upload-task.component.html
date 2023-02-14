@@ -2,6 +2,7 @@
     <mat-progress-bar color = "accent" mode="determinate" [value]="pct" max="100"></mat-progress-bar>
     {{ pct | number }}%
 </div>
+<div>{{downloadURL}}<div>
 
 <div *ngIf="(snapshot | async) as snap">
     <div>

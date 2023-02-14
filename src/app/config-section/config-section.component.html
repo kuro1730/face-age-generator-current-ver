@@ -1,4 +1,8 @@
-<section class="wrapper">
+
+<section class="wrapper" >
+  <div class="overlay" *ngIf="isLoading" >
+    <mat-spinner></mat-spinner>
+  </div>
   <div class="config" stye="padding-top:10px">
     <div *ngFor="let file of files">
       <app-card  *ngIf="file"[file]="file"></app-card>

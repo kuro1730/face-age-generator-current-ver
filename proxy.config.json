@@ -1,0 +1,8 @@
+{
+    "/v1/*": {
+      "target": "https://api.replicate.com",
+      "secure": false,
+      "logLevel":"debug",
+      "changeOrigin": true
+    }
+  }

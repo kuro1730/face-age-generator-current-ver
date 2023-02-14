@@ -36,8 +36,8 @@ export class UploadManagerComponent implements OnInit,AfterViewChecked {
     
     ngAfterViewChecked(){
     
-        if(this.uploadFinish==true)
-        this.router.navigate(['/config'] );
+        //if(this.uploadFinish==true)
+       
     }
     
     toggleHover(event: boolean) {
