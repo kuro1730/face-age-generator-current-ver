@@ -84,6 +84,7 @@ export class UploadTaskComponent implements OnInit {
                         
                     });
                     this.isUploadFinish.emit(true);
+                    this.store.dispatch(new UrlState.updateState({URL: this.downloadURL}))
                     this.router.navigate(['/config', { downloadURL: this.downloadURL }] );
                     // console.log(this.upLoadFinishStatus)
                     }),
